@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Grid } from "@material-ui/core";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import BrainTree from "./features/BrainTree";
+import Home from "./features/Home";
+import SideNav from "./features/SideNav";
+import Stripe from "./features/Stripe";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Grid container>
+        <Grid item md={2}>
+          <Route component={SideNav} />
+        </Grid>
+        <Grid item md={9}>
+          <Grid container justify="center">
+            <Route path="/" exact component={Home} />
+            <Route path="/stripe" exact component={Stripe} />
+            <Route path="/brain-tree" exact component={BrainTree} />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Router>
   );
 }
 
